@@ -9,6 +9,7 @@ import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.mockito.stubbing.OngoingStubbing;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
@@ -17,6 +18,9 @@ import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.*;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.*;
+
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -43,12 +47,8 @@ public class DemoApplicationTests {
 
         verify(placesVisitedRepository).findById(1L);
         assertEquals(1L, pv2.getid().longValue());
-    }
+        assertThat(pv2.getid(), is(1L));
 
-    @Test
-    public void testPlacesVisitedGetAll()
-    {
-        
     }
 
 }
